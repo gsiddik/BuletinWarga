@@ -1,0 +1,158 @@
+{
+  "theme": "light",
+  "archetype": "Organic & Earthy (Trust, Growth, Calm) optimized for High-Density Civic Operations",
+  "typography": {
+    "font_family": {
+      "heading": "Manrope, sans-serif",
+      "body": "Work Sans, sans-serif"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl tracking-tight leading-tight",
+      "h2": "text-2xl sm:text-3xl tracking-tight",
+      "h3": "text-xl sm:text-2xl",
+      "h4": "text-lg font-semibold",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-gray-600",
+      "tiny_label": "text-xs uppercase tracking-[0.2em]"
+    },
+    "rules": [
+      "Never use Inter for headings.",
+      "Avoid standard 'Bootstrap' text centering; align left for readability.",
+      "Use tight letter spacing (tracking-tight) for large headers.",
+      "Use font-black or font-extrabold for prominent numbers in the admin dashboard."
+    ]
+  },
+  "colors": {
+    "primary": {
+      "DEFAULT": "#2C5F2D",
+      "foreground": "#FFFFFF",
+      "hover": "#1F4220"
+    },
+    "secondary": {
+      "DEFAULT": "#97BC62",
+      "foreground": "#0A200A"
+    },
+    "background": {
+      "app": "#F9FAF8",
+      "surface": "#FFFFFF",
+      "muted": "#EDF1EA"
+    },
+    "status": {
+      "baru": { "bg": "#FEF3C7", "text": "#92400E" },
+      "dibaca": { "bg": "#DBEAFE", "text": "#1E40AF" },
+      "proses": { "bg": "#E0E7FF", "text": "#3730A3" },
+      "selesai": { "bg": "#D1FAE5", "text": "#065F46" },
+      "ditolak": { "bg": "#FEE2E2", "text": "#B91C1C" }
+    },
+    "text": {
+      "primary": "#1A2E1A",
+      "secondary": "#4B5563"
+    },
+    "forbidden_colors": [
+      "#1B93A4",
+      "#7351B7"
+    ],
+    "rules": [
+      "Use primary color minimally for CTAs, active states, and focus rings.",
+      "Never use pure black (#000000); use the tinted text.primary (#1A2E1A) for dark text.",
+      "Never use complete transparent backgrounds for overlays or dropdowns."
+    ]
+  },
+  "visual_enhancers": {
+    "surfaces": "Flat Solid surfaces preferred. Do not use Glassmorphism in data-heavy Admin dashboards to prevent visual refraction of data.",
+    "borders": "Use crisp 1px borders (border-slate-200 or border-muted) to define cards rather than relying heavily on shadow.",
+    "radius": {
+      "buttons": "rounded-full (pill-shaped) for public, rounded-md for admin",
+      "cards": "rounded-xl for public pages, rounded-lg for admin panels",
+      "badges": "rounded-full"
+    },
+    "shadows": {
+      "ambient": "shadow-sm shadow-slate-200/50",
+      "hover": "hover:shadow-md hover:-translate-y-0.5"
+    }
+  },
+  "grids_and_layouts": {
+    "public_page": {
+      "style": "The 'Tetris' Grid for featured content, overlapping elements for hero.",
+      "spacing": "Generous spacing. py-16 to py-24 for sections. gap-8 to gap-12."
+    },
+    "dashboard": {
+      "style": "High Density Grid for Analytics and Data. Every pixel must be utilized.",
+      "spacing": "Tight spacing. p-4 to p-6. gap-4 or gap-6.",
+      "structure": "Sidebar navigation (collapsible on mobile) + Topbar with prominent 'Buletin' button linking to public page."
+    }
+  },
+  "components": {
+    "buttons": "Pill-shaped (rounded-full) for public CTAs, rounded-md for dashboard actions. Explicit hover and active states.",
+    "cards": "Public: padded generously (p-6), subtle ambient shadow. Admin: flat, 1px border, compact (p-4).",
+    "badges": "Status badges (Baru/Dibaca/Selesai) must use rounded-full px-3 py-1 text-xs font-semibold with status-specific colors.",
+    "forms": "Use Shadcn Form/Input components heavily customized. Inputs should have muted background, focus:ring-2 focus:ring-primary. Support file uploads.",
+    "navigation": "Public: Sticky header with solid background. Include 'Dashboard' button for Admins. Admin: Left sidebar for desktop, bottom tab or hamburger for mobile.",
+    "tabs": "Use Shadcn Tabs for navigating between 'Form', 'Laporan Warga', and 'Laporan Saya'."
+  },
+  "motion": {
+    "rules": [
+      "Add transition-all duration-200 for hover states to all interactive elements.",
+      "Stagger entrance animations for list items in Laporan Warga.",
+      "Respect prefers-reduced-motion."
+    ]
+  },
+  "accessibility": {
+    "contrast": "Ensure all text meets at least 4.5:1 APCA/WCAG ratio against backgrounds.",
+    "focus": "Apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 on all inputs and buttons.",
+    "testing": "CRITICAL: All interactive elements MUST include data-testid attribute (e.g., data-testid='submit-report-btn', data-testid='nav-buletin')."
+  },
+  "media_and_images": {
+    "image_urls": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1651514645933-c26e0eb4ace3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHwzfHxjb21tdW5pdHklMjBtZWV0aW5nJTIwbmVpZ2hib3Job29kfGVufDB8fHx8MTc4NzA2NzQwNXww&ixlib=rb-4.1.0&q=85",
+        "description": "Group of people talking, representing community engagement. Use in public hero section with max opacity bg-black/40 or gradient overlay to ensure text contrast."
+      },
+      "mobile_app_feature": {
+        "url": "https://images.pexels.com/photos/3720/person-hand-smartphone-technology.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Person using a smartphone outdoors. Use for 'akses dari mobile' visual context."
+      }
+    },
+    "rules": [
+      "Do not use placeholder text or dummy images. Use the provided URLs.",
+      "Hero images must not be entirely hidden by dark overlays. Use bg-black/30 or gradient overlay.",
+      "Images should not exceed 80vh on mobile."
+    ]
+  },
+  "3d_and_creative": {
+    "strategy": "Minimal. This is a civic platform requiring high legibility and operational clarity. Use Recharts for dashboard statistics, avoiding heavy 3D libraries to keep performance snappy."
+  },
+  "instructions_to_main_agent": {
+    "setup": [
+      "Initialize Tailwind and ensure colors are mapped in tailwind.config.js as CSS variables.",
+      "Install required fonts from Google Fonts: Manrope and Work Sans.",
+      "Install required icon library: lucide-react."
+    ],
+    "structure": [
+      "Build a hybrid_fullstack layout. Include Public Pages and Admin Dashboard.",
+      "Public Pages: Login, Form Pengaduan & Aspirasi (with attachment, anonim/rahasia checkboxes), Laporan Warga (bulletin list with badges), Laporan Saya.",
+      "Admin Pages: Dashboard (Statistik), Master Data CRUD (RW, RT, Warga, Pengurus, Kategori), Role & Permission, Pengaduan/Aspirasi Moderation.",
+      "Top-right 'Buletin' button in Admin must route to Public Home.",
+      "Top-right 'Dashboard' button in Public must route to Admin Dashboard."
+    ],
+    "components_to_use": [
+      "Shadcn Dialog/Sheet for Moderation actions.",
+      "Shadcn Table for Master Data.",
+      "Shadcn Tabs for Public reporting navigation.",
+      "Sonner for Toasts.",
+      "Recharts for Dashboard statistics."
+    ]
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts. Create depth through layered design elements with z-index hierarchy.",
+    "You MUST NOT apply universal transition (transition: all). Use specific transitions (e.g. transition-colors).",
+    "You MUST NOT center align the app container (.App { text-align: center; }).",
+    "Always use modern button styles with interaction animations.",
+    "NEVER use AI assistant Emoji characters (🤖🧠💭💡) for icons.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Missing categories for images means use provided images, NEVER use placeholder text.",
+    "Ensure all interactive elements have data-testid for E2E tests."
+  ]
+}
