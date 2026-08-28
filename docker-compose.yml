@@ -1,0 +1,90 @@
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL:-}
+
+    container_name: buletin-frontend
+
+    restart: unless-stopped
+
+    ports:
+      - "3100:80"
+
+    depends_on:
+      backend:
+        condition: service_started
+
+    networks:
+      - buletin-network
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: buletin-backend
+
+    restart: unless-stopped
+
+    environment:
+      MONGO_URL: mongodb://mongo:27017
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_PHONE: ${ADMIN_PHONE}
+
+    expose:
+      - "8000"
+
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+    networks:
+      - buletin-network
+
+
+  mongo:
+    image: mongo:7
+
+    container_name: buletin-mongo
+
+    restart: unless-stopped
+
+    volumes:
+      - buletin-mongo-data:/data/db
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--eval",
+          "db.adminCommand('ping').ok"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+    networks:
+      - buletin-network
+
+
+volumes:
+  buletin-mongo-data:
+    name: buletin-mongo-data
+
+
+networks:
+  buletin-network:
+    name: buletin-network
+    driver: bridge
